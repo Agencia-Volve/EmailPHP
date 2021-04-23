@@ -1,5 +1,9 @@
 <?php
 
+header("Access-Control-Allow-Headers: Authorization, Content-Type");
+header("Access-Control-Allow-Origin: *");
+header('content-type: application/json; charset=utf-8');
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -35,8 +39,8 @@ try {
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
   $mail->Port = 587;
 
-  $mail->setFrom($_ENV["EMAIL"], "Contato");
-  $mail->addAddress($email, $nome);
+  $mail->setFrom($email, "Contato");
+  $mail->addAddress($_ENV["EMAIL"], $nome);
 
   $mail->isHTML(true);
   $mail->Subject = "Nova mensagem de $email";
@@ -48,3 +52,5 @@ try {
 } catch (Exception $e) {
   echo "E-mail não enviado";
 }
+
+?>
