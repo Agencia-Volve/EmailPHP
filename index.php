@@ -5,6 +5,7 @@ header("Access-Control-Allow-Origin: *");
 header('content-type: application/json; charset=utf-8');
 
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require __DIR__ . '/vendor/autoload.php';
