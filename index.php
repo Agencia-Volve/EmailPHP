@@ -38,6 +38,13 @@ try {
   $mail->Username = $_ENV["EMAIL"];
   $mail->Password = $_ENV["PASSWORD"];
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+  $mail->SMTPOptions = array(
+    "ssl" => array(
+      "verify_peer" => false,
+      "verify_peer_name" => false,
+      "allow_self_signed" => true
+    )
+    );
   $mail->Port = 587;
 
   $mail->setFrom($email, "Contato");
